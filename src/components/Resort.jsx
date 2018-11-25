@@ -144,7 +144,7 @@ The gorgeous and luxurious resort has one, two and three bedroom suites availabl
 
 
 
-class NotFound extends React.Component{
+class Resorts extends React.Component{
 
     state = {
         id: ' ',
@@ -381,4 +381,4 @@ render()
 
 
 
-export default NotFound;
+export default Resorts;

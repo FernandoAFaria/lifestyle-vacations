@@ -4,7 +4,7 @@ import { BrowserRouter, Route,  Switch } from 'react-router-dom';
 import './components/css/main.css';
 /*COMPONENTS */
 import Nav from './components/Nav'
-import NotFound from './components/NotFound'
+import Resort from './components/Resort'
 import  { Showcase, Resorts} from './components/Showcase';
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
             <Route exact path="/" component={Showcase}></Route>
             <Route exact path="/resorts" component={Resorts} />
             
-            <Route path="/:id" component={NotFound}></Route>
+            <Route path="/:id" component={Resort}></Route>
             </Switch>
             
             
