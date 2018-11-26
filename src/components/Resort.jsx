@@ -311,6 +311,39 @@ render()
         })
     }
 
+    let handleSubmitResort = (e) => {
+        e.preventDefault();
+       let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let adults = document.getElementById('adults').value;
+        let children = document.getElementById('children').value;
+        let checkin = document.getElementById('in-date').value;
+        let checkout = document.getElementById('out-date').value;
+        let resort = document.getElementById('resortName').value;
+
+        let data = {
+            name: name,
+            email: email,
+            Adults: adults,
+            Children: children,
+            checkIn: checkin,
+            checkOut: checkout,
+            resort: resort
+        }
+       
+        fetch('https://hooks.zapier.com/hooks/catch/3956551/eboh1p/', {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(data),
+
+        }).then(res => res.json())
+            .then((response) => {
+                alert('Submit was successfull, We will be in touch')
+            })
+
+
+    }
+
     return(
         <div style={{ textAlign: 'center', marginTop: '10%' }}>
             <h1>{this.state.resortName}</h1>
@@ -321,7 +354,7 @@ render()
             <div className="book" style={book}>
                 <h2>Book this resort</h2><br></br>
 
-                <form id="book" method="post" action="https://hooks.zapier.com/hooks/catch/3956551/eboh1p/">
+                <form id="book">
                         <div style={{display: 'flex', justifyContent: 'center'}}>
 
                                 <div style={{ flexBasis: '40%', textAlign: 'left'}}>
@@ -351,18 +384,18 @@ render()
                                     <input name='checkout' type="date" required id="out-date" value={this.state.checkoutDate} onChange={(event) => handleCheckoutDate(event.target.value)} /><br></br>
                                 
                                 <label for="out-date">Location</label>
-                                    <input name='location' type="text" required id="out-date" readOnly value={this.state.resortName}/><br></br>
+                            <input name='location' type="text" required id="resortName" readOnly value={this.state.resortName}/><br></br>
                                 
-                                <input className="btn-submit" type="submit" value="Submit" />
+                                <input className="btn-submit" type="submit" value="Submit" onClick={(e) => handleSubmitResort(e)} />
 
                             </div>
                         </div>
                     </form>
             </div>
             <div style={imageContainer}>
-                {this.state.pics.map((x)=> {
+                {this.state.pics.map((x, index)=> {
                     return(
-                        <div>
+                        <div key={index}>
                         <img style={images} src={x} alt="Tropical Suite Pictures"></img>
                         </div>
                     )

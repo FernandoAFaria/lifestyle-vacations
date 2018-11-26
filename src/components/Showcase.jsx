@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import "../components/css/resorts.css";
 import Compare from "./Compare";
 /*Scroll Reveal */
-import Slide from 'react-reveal/Slide';
+
 /*IMPORT RESORT PICTURES HERE */
 import confback from '../img/Confresi Palm Beach/confback.jpg';
 import presback from '../img/Presedential Suites/presback.jpg';
@@ -16,6 +16,7 @@ import dreamsuitesback from '../img/Dream Suites/dreamsuitesback.jpg';
 import dreamsuitespunta from '../img/deramsuites punta cana/dreamsuitespunta.jpg';
 import pressuitespunta from '../img/pres suites punta cana/pressuitespunta.jpg';
 import allritmoback from '../img/All Ritmo/allritmoback.jpg';
+const fetch = require('isomorphic-fetch');
 
 
 
@@ -135,7 +136,24 @@ const Contact = () => {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        
+        let name = document.getElementById('contact-name').value;
+        let email = document.getElementById('contact-email').value;
+        let body = document.getElementById('contact-text-area').value;
+        let data = {
+            name: name,
+            email: email,
+            body: body
+        }
+        fetch('https://hooks.zapier.com/hooks/catch/3956551/egszxh/', {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(data),
+      
+    }).then(res => res.json())
+    .then((response) => {
+        alert('Submit was successfull')
+    })
+  
         
     }
 
@@ -146,11 +164,11 @@ const Contact = () => {
             <div className="left">
             <h2>Have a question?</h2>
             <h5>Please fill out the quick form and we will be in touch!</h5>
-                <form id="contact-form" method="post" action="https://hooks.zapier.com/hooks/catch/3956551/egszxh/" onSubmit={(e) => e.preventDefault()} >
-                <input type="text" name="name" placeholder="  Name"></input><br></br>
-                <input type="email" name="email"placeholder="  Your Email Address"></input><br></br>
+                <form id="contact-form" >
+                <input type="text" name="name" id='contact-name'placeholder="  Name"></input><br></br>
+                <input type="email" name="email" id='contact-email' placeholder="  Your Email Address"></input><br></br>
                 <textarea rows="5" name="body" id="contact-text-area" placeholder="How can we help?"></textarea><br></br>
-                <button type="submit" className="btn">Submit</button>
+                <button type="submit" className="btn" onClick={(e) => handleSubmit(e)}>Submit</button>
             </form>
             </div>
             <div className="bottom">
@@ -176,10 +194,10 @@ export const Resorts = () => {
         <section style={{padding: '50px 0 50px 0', textAlign:'center'}}><h1>Please browse avaliable resorts below.</h1>
         <div style={resortsStyle} id="resorts">
            
-           {resortInfo.map((x) => {
+           {resortInfo.map((x, index) => {
                 return (
                     
-                    <Cards  name={x.name} foreground={x.foreground} background={x.background} location={x.location} link={x.link} />
+                    <Cards key={index} name={x.name} foreground={x.foreground} background={x.background} location={x.location} link={x.link} />
                    
                 )
             })}
