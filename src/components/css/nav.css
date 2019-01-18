@@ -1,93 +1,113 @@
-
-
-
-.hiddenmenu{
-    position: fixed;
-    height: 100vh;
-    width: 300px;
-    background: rgb(48, 48, 48);
-    padding: 50px 35px 0px 35px;
-    color: white;
-    transition: all .3s smooth;
+.hiddenmenu {
+  position: fixed;
+  height: 100vh;
+  width: 300px;
+  background: rgb(28, 28, 28);
+  padding: 50px 35px 0px 35px;
+  color: white;
+  transition: all 0.3s smooth;
 }
-.show{
-    right: 0;
-    top: 0;
+.show {
+  right: 0;
+  top: 0;
 }
-.hidden{
-    top: 0px;
-    right: -500px
+.hidden {
+  top: 0px;
+  right: -500px;
 }
-.close-menu{
-    position: fixed;
-    color: white;
-   font-style: bold;
-    font-size: 2em;
-    cursor: pointer;
+.close-menu {
+  position: fixed;
+  color: white;
+  font-style: bold;
+  font-size: 2em;
+  cursor: pointer;
 }
-.visible{
+.visible {
   top: 20px;
- right: 325px;
+  right: 325px;
 }
 
-ul{
-    margin-top: 50px;
-    list-style-type: none;
-   
+ul {
+  margin-top: 50px;
+  list-style-type: none;
 }
-.hiddenmenu ul li{
-    margin-top: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid grey;
-    text-decoration: none;
-    color: white;
-    text-decoration-line: none;
+.hiddenmenu ul li {
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid grey;
+  text-decoration: none;
+  color: white;
+  text-decoration-line: none;
 }
-.hiddenmenu ul li:hover{
-    color: purple;
-    font-weight: 600;
+.hiddenmenu ul li:hover {
+  color: purple;
+  font-weight: 600;
 }
-a{
-    text-decoration: none;
-     
+a {
+  text-decoration: none;
 }
-.inclusive-plan li{
-    margin-bottom: 15px;
+.inclusive-plan li {
+  margin-bottom: 15px;
 }
-#book input{
-    height: 30px;
- 
-    border-radius: 2px;
-    border: 2px solid grey;
-    transform: translateY(-2px);
-   margin-top: 15px;
+#book input {
+  height: 30px;
+
+  border-radius: 2px;
+  border: 2px solid grey;
+  transform: translateY(-2px);
+  margin-top: 15px;
 }
-#name, #email, #in-date, #out-date{
-   min-width: 210px;
-    max-width: 300px;
+#name,
+#email,
+#in-date,
+#out-date {
+  min-width: 210px;
+  max-width: 300px;
 }
-#adults, #children{
-    max-width: 55px;
-    
-    
+#adults,
+#children {
+  max-width: 55px;
 }
 
 #book label {
-    font-weight: 400;
-    margin: 0 15px 0 5px;
+  font-weight: 400;
+  margin: 0 15px 0 5px;
 }
-.btn-submit{
-    background: red;
-    width: 95px;
-    height: 35px;
-    margin-top: 25px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 2px 2px 6px black;
-    
+.btn-submit {
+  background: red;
+  width: 95px;
+  height: 35px;
+  margin-top: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px black;
 }
-.btn-submit:hover{
-    background: lawngreen;
-    color: black;
+.btn-submit:hover {
+  background: lawngreen;
+  color: black;
+}
+.navLogo {
+  margin-top: -22px;
+  height: 105px;
+}
+.mobile-text {
+  color: white;
+  margin-top: 15px;
+  display: none;
+}
+@media only screen and (max-width: 830px) {
+  .navLogo {
+    width: 500px;
+    height: auto;
+    margin-top: -14px;
+  }
+}
+@media only screen and (max-width: 580px) {
+  .navLogo {
+    margin-top: -11px;
+    margin-left: -25px;
+    max-height: 75px;
+    width: auto;
+  }
 }
